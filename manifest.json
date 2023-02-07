@@ -1,0 +1,63 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "Blazed Api NEW",
+        "description": "New Blazed Api\nMade by: iBlqzed",
+        "uuid": "a6762461-2fbd-49bb-9e4b-bd41444f885a",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            19,
+            50
+        ]
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "4b8f29f3-c593-49c1-8967-2f30ade2f2d4",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        },
+        {
+            "language": "javascript",
+            "type": "script",
+            "uuid": "30ecf93c-9910-4204-b88f-f357415b9541",
+            "version": [
+                1,
+                0,
+                0
+            ],
+            "entry": "scripts/index.js"
+        }
+    ],
+    "dependencies": [
+        {
+            "module_name": "@minecraft/server",
+            "version": "1.1.0-beta"
+        },
+        {
+            "module_name": "@minecraft/server-gametest",
+            "version": "1.0.0-beta"
+        },
+        {
+            "module_name": "@minecraft/server-ui",
+            "version": "1.0.0-beta"
+        }
+    ],
+    "metadata": {
+        "authors": [
+            "iBlqzed"
+        ],
+        "url": "https://github.com/iBlqzed/Blazed-Api-New"
+    },
+    "capabilities": [
+        "script_eval"
+    ]
+}
