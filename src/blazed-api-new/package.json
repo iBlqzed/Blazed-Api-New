@@ -1,0 +1,22 @@
+{
+  "name": "blazed-api-new",
+  "version": "1.0.0",
+  "description": "New Blazed API for Minecraft Bedrock (it's a wrapper but fuck off)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/iBlqzed/Blazed-Api-New"
+  },
+  "author": "iBlqzed",
+  "license": "ISC",
+  "types": "./server.d.ts",
+  "dependencies": {
+    "@minecraft/server": "^1.1.0-beta.1.19.60-preview.24",
+    "@minecraft/server-gametest": "^1.0.0-beta.1.19.60-preview.24",
+    "@minecraft/server-ui": "^1.0.0-beta.1.19.60-preview.24"
+  }
+}
