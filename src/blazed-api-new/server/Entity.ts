@@ -21,6 +21,11 @@ declare module "@minecraft/server" {
          */
         getHealth(): number
         /**
+         * Get the entity's inventory (if they have one)
+         * @returns {InventoryComponentContainer} The entity's inventory
+         */
+        getInventory(): InventoryComponentContainer
+        /**
          * Get the entity's score on a scoreboard
          * @param {string} objective Objective name to get the score from
          * @returns {number} The score on the scoreboard (or NaN if an error is thrown)
@@ -58,6 +63,9 @@ Object.assign(Entity.prototype, {
     },
     getHealth() {
         return this.getComponent("health")?.current
+    },
+    getInventory() {
+        return this.getComponent("inventory")?.container
     },
     getScore(objective: string | ScoreboardObjective) {
         try {

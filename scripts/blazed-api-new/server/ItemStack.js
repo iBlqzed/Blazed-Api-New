@@ -11,5 +11,18 @@ Object.assign(ItemStack.prototype, {
     },
     getComponent(componentId) {
         return getComp.bind(this)(componentId);
+    },
+    getEnchant(enchant) {
+        return this.getComponent('enchantments')?.enchantments?.getEnchantment(enchant instanceof Enchantment ? enchant.type : typeof enchant === "string" ? MinecraftEnchantmentTypes[enchant] : enchant);
+    },
+    getEnchants() {
+        return Array.from(this.getComponent("enchantments")?.enchantments ?? []);
+    },
+    removeEnchant(enchant) {
+        const eC = this.getComponent('enchantments'), eL = eC?.enchantments;
+        if (!eC)
+            return;
+        eL.removeEnchantment(enchant instanceof Enchantment ? enchant.type : typeof enchant === "string" ? MinecraftEnchantmentTypes[enchant] : enchant);
+        eC.enchantments = eL;
     }
 });

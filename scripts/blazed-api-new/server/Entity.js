@@ -11,6 +11,9 @@ Object.assign(Entity.prototype, {
     getHealth() {
         return this.getComponent("health")?.current;
     },
+    getInventory() {
+        return this.getComponent("inventory")?.container;
+    },
     getScore(objective) {
         try {
             return (typeof objective === "string" ? world.scoreboard.getObjective(objective) : objective).getScore(this.scoreboard);

@@ -1,4 +1,4 @@
-import { Events } from "@minecraft/server"
+import { Events, world } from "@minecraft/server"
 import { PlayerDeathEventSignal } from "./playerDeath.js"
 
 declare module "@minecraft/server" {
@@ -9,3 +9,5 @@ declare module "@minecraft/server" {
 Object.assign(Events.prototype, {
     playerDeath: new PlayerDeathEventSignal()
 })
+
+world.events.playerDeath.unsubscribe()

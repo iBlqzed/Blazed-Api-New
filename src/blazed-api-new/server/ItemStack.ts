@@ -17,6 +17,22 @@ declare module "@minecraft/server" {
          * @returns {ItemComponents[compName]} The component
          */
         getComponent<compName extends keyof ItemComponents>(component: compName): ItemComponents[compName]
+        /**
+         * Get an enchant from the item
+         * @param {keyof typeof MinecraftEnchantmentTypes} enchant Enchant to get from the item
+         * @returns {Enchantment} The enchant
+         */
+        getEnchant<enchName extends keyof typeof MinecraftEnchantmentTypes>(enchant: enchName extends "prototype" ? never : enchName | Enchantment | EnchantmentType): Enchantment
+        /**
+         * Get all enchants on the item
+         * @returns {Enchantment[]} All enchants on the item
+         */
+        getEnchants(): Enchantment[]
+        /**
+         * Remove an enchant from the item
+         * @param {keyof typeof MinecraftEnchantmentTypes} enchant Enchant to remove from the item
+         */
+        removeEnchant<enchName extends keyof typeof MinecraftEnchantmentTypes>(enchant: enchName extends "prototype" ? never : enchName | Enchantment | EnchantmentType): void
     }
 }
 
@@ -32,6 +48,18 @@ Object.assign(ItemStack.prototype, {
     },
     getComponent(componentId: string) {
         return getComp.bind(this)(componentId)
+    },
+    getEnchant(enchant: keyof typeof MinecraftEnchantmentTypes | Enchantment | EnchantmentType): Enchantment {
+        return this.getComponent('enchantments')?.enchantments?.getEnchantment(enchant instanceof Enchantment ? enchant.type : typeof enchant === "string" ? MinecraftEnchantmentTypes[enchant] : enchant)
+    },
+    getEnchants(): Enchantment[] {
+        return Array.from(this.getComponent("enchantments")?.enchantments ?? [])
+    },
+    removeEnchant(enchant: keyof typeof MinecraftEnchantmentTypes | Enchantment | EnchantmentType): void {
+        const eC = this.getComponent('enchantments'), eL = eC?.enchantments
+        if (!eC) return;
+        eL.removeEnchantment(enchant instanceof Enchantment ? enchant.type : typeof enchant === "string" ? MinecraftEnchantmentTypes[enchant] : enchant)
+        eC.enchantments = eL
     }
 })
 

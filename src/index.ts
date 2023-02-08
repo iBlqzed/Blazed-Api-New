@@ -6,7 +6,3 @@ world.events.beforeChat.subscribe(data => {
 })
 
 world.setGamerule("showcoordinates", false)
-
-world.events.playerDeath.subscribe((data) => {
-    world.say(`${data.player.name} has died`)
-})

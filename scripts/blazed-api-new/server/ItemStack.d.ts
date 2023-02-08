@@ -15,6 +15,22 @@ declare module "@minecraft/server" {
          * @returns {ItemComponents[compName]} The component
          */
         getComponent<compName extends keyof ItemComponents>(component: compName): ItemComponents[compName];
+        /**
+         * Get an enchant from the item
+         * @param {keyof typeof MinecraftEnchantmentTypes} enchant Enchant to get from the item
+         * @returns {Enchantment} The enchant
+         */
+        getEnchant<enchName extends keyof typeof MinecraftEnchantmentTypes>(enchant: enchName extends "prototype" ? never : enchName | Enchantment | EnchantmentType): Enchantment;
+        /**
+         * Get all enchants on the item
+         * @returns {Enchantment[]} All enchants on the item
+         */
+        getEnchants(): Enchantment[];
+        /**
+         * Remove an enchant from the item
+         * @param {keyof typeof MinecraftEnchantmentTypes} enchant Enchant to remove from the item
+         */
+        removeEnchant<enchName extends keyof typeof MinecraftEnchantmentTypes>(enchant: enchName extends "prototype" ? never : enchName | Enchantment | EnchantmentType): void;
     }
 }
 export declare type ItemComponents = {
